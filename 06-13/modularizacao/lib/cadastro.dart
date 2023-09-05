@@ -1,3 +1,5 @@
+// ignore_for_file: empty_statements, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:modularizacao/aluno_repository.dart';
 
@@ -20,34 +22,45 @@ class _MyCadastoState extends State<MyCadasto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(10),
-          child:
-        Column(
-        children: [
-          TextField(
-            controller: campoNome,
-          ),
-          TextField(
-            controller: campoRa,
-          ),
-          SizedBox(height: 10,),
-          ElevatedButton(
-            onPressed: (){
-              ra = int.parse(campoRa.text);
-              nome = campoNome.text;
-              Aluno al = Aluno(nome, ra);
-              listaAl.adicionar(al);
-              listaAl.imprimir();
-              campoNome.clear();
-              campoRa.clear();
-            }, 
-            child: Text("Cadastrar"),
-          )
-        ],
-      )),)
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: (Text("Cadastro")),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/lista');
+                },
+                icon: Icon(Icons.list))
+          ],
+        ),
+        body: Center(
+          child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: campoNome,
+                  ),
+                  TextField(
+                    controller: campoRa,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      ra = int.parse(campoRa.text);
+                      nome = campoNome.text;
+                      Aluno al = Aluno(nome, ra);
+                      listaAl.adicionar(al);
+                      listaAl.imprimir();
+                      campoNome.clear();
+                      campoRa.clear();
+                    },
+                    child: Text("Cadastrar"),
+                  )
+                ],
+              )),
+        ));
   }
 }
-

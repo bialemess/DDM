@@ -1,12 +1,11 @@
 import 'aluno.dart';
 
 class AlunoRepository{
-  List<Aluno> _listaAlunos = [];
+  static List<Aluno> _listaAlunos = [];
+  static get getListaAlunos => _listaAlunos;
+  set listaAlunos(value)=> _listaAlunos = value;
 
-  //construtor
-  AlunoRepository(){
-    this._listaAlunos = [];
-  }
+  //construto
 
   void adicionar(Aluno al){
     _listaAlunos.add(al);
